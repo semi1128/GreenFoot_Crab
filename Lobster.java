@@ -15,6 +15,10 @@ public class Lobster extends Animal
     public void act() 
     {
         // Add your action code here.
+      
+       if(getOneObjectAtOffset(0, 0, Lobster.class) != null){
+            getWorld().removeObject(this);
+       }
        if(isAtEdge() )
         {
             turn(17);
