@@ -17,11 +17,7 @@ public class turtle extends Lobster implements Freezable
      * Act - do whatever the turtle wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public void act() 
-    {
-        if(getOneObjectAtOffset(0, 0, Lobster.class) != null){
-            getWorld().removeObject(this);
-     }
+    
   
      if(isAtEdge() )
         {
