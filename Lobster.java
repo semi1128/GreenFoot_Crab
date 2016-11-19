@@ -16,7 +16,7 @@ public class Lobster extends Animal
     {
         // Add your action code here.
       
-       if(getOneObjectAtOffset(0, 0, Lobster.class) != null){
+       if(getOneObjectAtOffset(0, 0, turtle.class) != null){
             getWorld().removeObject(this);
        }
        if(isAtEdge() )
