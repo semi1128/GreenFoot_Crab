@@ -23,9 +23,9 @@ public class Crab extends Animal
         {
             turn (Greenfoot.getRandomNumber(90) - 45);         
         }
-        move(5);
+        checkKeypress();
         lookForWorm();
-  }
+    }
         
     public void lookForWorm()
     {
@@ -33,5 +33,32 @@ public class Crab extends Animal
         {
             removeTouching(Worm.class);
         }
-  }
+    }
+    public void checkKeypress()
+    {
+        int xpos = getX();
+        int ypos = getY();
+        int speed = 5;
+        if ( Greenfoot.isKeyDown("up") )
+        {
+            setRotation(0);
+            ypos -= speed;
+        }
+        if ( Greenfoot.isKeyDown("down") )
+        {
+            setRotation(180);
+            ypos += speed;
+        }
+        if ( Greenfoot.isKeyDown("right") )
+        {
+            setRotation(90);
+            xpos += speed;
+        }
+        if ( Greenfoot.isKeyDown("left") )
+        {
+            setRotation(270);
+            xpos -= speed;
+        }
+        setLocation(xpos,ypos);
+    }
 }
