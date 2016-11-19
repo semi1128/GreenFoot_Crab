@@ -8,36 +8,43 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MyWorld extends World
 {
-    Counter counter = new Counter();
+   Label scoreBoard = new Label("Score : 0");
+   int nowcount = 0;
     /**
      * Constructor for objects of class MyWorld.
      * 
      */
     public MyWorld()
     {    
-        super(600, 400 ,1);
         
-        prepare();
+        super(600, 400 ,1);
+        addObject(new Crab(), 50, 50);
+        addObject(new Worm(), 100, 100);
+        addObject(new Lobster(), 300, 300);
+        addObject(new turtle(), 100, 200);
+        addObject(new Worm(), 99, 57);
+        addObject(new Worm(), 299, 78);
+        addObject(new Worm(), 499, 300);
+        addObject(new Worm(), 388, 390);
+        addObject(new Worm(), 100, 390);
+        addObject(new Worm(), 150, 300);
+        addObject(new Worm(), 278, 200);
+        addObject(new Worm(), 500, 250);
+        addObject(new Worm(), 570, 170);
+        addObject(new Worm(), 420, 350);
+        addObject(new Worm(), 530, 80);
+        addObject(new Worm(), 400, 160);
+        addObject(scoreBoard, 600, 20);
     }
     
-    public Counter getCounter()
+    public void act()
     {
-        return counter;
-    }
-    
-    private void prepare()
-    {
-       addObject(counter, 60, 30);
-        Crab crab = new Crab();
-       addObject(new Crab(), Greenfoot.getRandomNumber(600), Greenfoot.getRandomNumber(400));
-       addObject(new Crab(), Greenfoot.getRandomNumber(600), Greenfoot.getRandomNumber(400));
-       addObject(new Crab(), Greenfoot.getRandomNumber(600), Greenfoot.getRandomNumber(400));
-       Worm worm = new Worm();
-       addObject(new Worm(), Greenfoot.getRandomNumber(600), Greenfoot.getRandomNumber(400));
-       addObject(new Worm(), Greenfoot.getRandomNumber(600), Greenfoot.getRandomNumber(400));
-       addObject(new Worm(), Greenfoot.getRandomNumber(600), Greenfoot.getRandomNumber(400));
-       addObject(new Counter(), 60, 30); 
-       addObject(new Lobster(), Greenfoot.getRandomNumber(600), Greenfoot.getRandomNumber(400));
-       addObject(new turtle(), Greenfoot.getRandomNumber(600), Greenfoot.getRandomNumber(400));
+        scoreBoard.setText("Score : "+Crab.score);
+        
+        if(Crab.score % 100 == 0 &&! (nowcount == Crab.score))
+        {
+            addObject(new Lobster(), 200, 300);
+            nowcount = Crab.score;
+        }
     }
 }

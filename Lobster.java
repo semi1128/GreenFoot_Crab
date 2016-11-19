@@ -15,19 +15,29 @@ public class Lobster extends Animal
     public void act() 
     {
         // Add your action code here.
-      
-       if(getOneObjectAtOffset(0, 0, turtle.class) != null){
-            getWorld().removeObject(this);
-       }
        if(isAtEdge() )
         {
             turn(17);
         }
-        
+        if(getOneObjectAtOffset(0, 0, turtle.class) != null){
+            getWorld().removeObject(this);
+       }
        if( Greenfoot.getRandomNumber(100) < 10)
         {
             turn (Greenfoot.getRandomNumber(90) - 45);         
         }
        move(5);
+       eatCrab();
+    }   
+    public void eatCrab()
+    {
+       Actor Crab = getOneIntersectingObject(Crab.class);
+      if ( isTouching (Crab.class) )
+        {
+           removeTouching (Crab.class);
+           World CrabWorld = getWorld();
+           Gameover gameover = new Gameover();
+           CrabWorld.addObject(gameover, CrabWorld.getWidth()/2, CrabWorld.getHeight()/2);
+        }
     }   
 }

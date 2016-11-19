@@ -8,31 +8,44 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class turtle extends Lobster implements Freezable
 {
-  private int counter;
+  private int counter = 100;
+  private int counter_low = 0;
   public turtle()
   {
-      counter = 100;
   }
     /**
      * Act - do whatever the turtle wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    
+    public void act() 
+    {
   
      if(isAtEdge() )
         {
             turn(17);
-        }
-        
+        }   
+     
      if( Greenfoot.getRandomNumber(100) < 10)
        {
             turn (Greenfoot.getRandomNumber(90) - 45);         
        }
-     if( counter < 0)
-            super.act();
+     if( counter > 0)
+     { 
+         move(5);
+         counter--; 
+     }
      else
-            counter--; 
-       move(5);
+     {
+        if(counter + counter_low == 100)
+        {
+            counter = 100;
+            counter_low = 0;
+        }
+        else
+        {
+            counter_low++;
+        }
+     }
   }
   public void freeze(int count)
   {

@@ -8,7 +8,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Crab extends Animal
 {
-  /**
+  public static int score = 0;
+    /**
      * Act - do whatever the Crab wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
@@ -19,22 +20,24 @@ public class Crab extends Animal
             turn(17);
         }
         
-        if( Greenfoot.getRandomNumber(100) < 10)
+        if(Greenfoot.getRandomNumber(100) < 10)
         {
-            turn (Greenfoot.getRandomNumber(90) - 45);         
+            turn(Greenfoot.getRandomNumber(90) - 45);
         }
-        checkKeypress();
         lookForWorm();
-    }
+        checkKeypress();
+        setScore();
+  }
         
     public void lookForWorm()
     {
         if( isTouching(Worm.class) ) 
         {
             removeTouching(Worm.class);
+            score = score + 10;
         }
-    }
-    public void checkKeypress()
+  }
+  public void checkKeypress()
     {
         int xpos = getX();
         int ypos = getY();
@@ -61,4 +64,13 @@ public class Crab extends Animal
         }
         setLocation(xpos,ypos);
     }
+    public void setScore()
+  {
+        if (score > 300) 
+        {
+            World MyWolrd = getWorld();
+            Victory victory = new Victory();
+            MyWolrd.addObject(victory, MyWolrd.getWidth()/2,MyWolrd.getHeight()/2);
+        }
+  }
 }
